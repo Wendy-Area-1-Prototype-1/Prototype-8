@@ -1,3 +1,8 @@
+/*
+This stylesheet keeps the flower still between notes and applies one short shake
+per beat so the movement communicates rhythm instead of continuous playback.
+*/
+
 :root {
     --ink: #263832;
     --cream: #f5f1e7;
@@ -68,6 +73,7 @@ h1 {
     background: var(--garden);
 }
 
+/* The large circular target supports repeated mouse, touch and keyboard input. */
 .flower {
     display: grid;
     width: min(8rem, 50vw);
@@ -92,16 +98,28 @@ h1 {
 }
 
 /* A brief side-to-side wrist motion makes each note feel like a maraca shake. */
-.flower.beat-shake {
+.flower.beatShake {
     animation: beat-shake 0.36s ease-in-out;
     transform-origin: 50% 85%;
 }
 
 @keyframes beat-shake {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    20% { transform: translateX(-0.2rem) rotate(-12deg); }
-    45% { transform: translateX(0.2rem) rotate(12deg); }
-    70% { transform: translateX(-0.08rem) rotate(-6deg); }
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    20% {
+        transform: translateX(-0.2rem) rotate(-12deg);
+    }
+
+    45% {
+        transform: translateX(0.2rem) rotate(12deg);
+    }
+
+    70% {
+        transform: translateX(-0.08rem) rotate(-6deg);
+    }
 }
 
 .flower:focus-visible {
@@ -109,7 +127,7 @@ h1 {
     outline-offset: 7px;
 }
 
-.sound-status {
+.soundStatus {
     max-width: 100%;
     min-height: 3em;
     margin: 0;
@@ -131,13 +149,22 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .flower.beat-shake {
+    .flower.beatShake {
         animation-duration: 0.24s;
     }
 
     @keyframes beat-shake {
-        0%, 100% { transform: translateX(0) rotate(0deg); }
-        40% { transform: translateX(-0.08rem) rotate(-4deg); }
-        70% { transform: translateX(0.08rem) rotate(4deg); }
+        0%,
+        100% {
+            transform: translateX(0) rotate(0deg);
+        }
+
+        40% {
+            transform: translateX(-0.08rem) rotate(-4deg);
+        }
+
+        70% {
+            transform: translateX(0.08rem) rotate(4deg);
+        }
     }
 }
