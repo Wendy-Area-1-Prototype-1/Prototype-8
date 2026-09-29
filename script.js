@@ -73,7 +73,9 @@ async function startRhythm() {
         }
         if (!flowerSynth) {
             flowerSynth = new Tone.Synth({
-                oscillator: { type: "sine" },
+                oscillator: {
+                    type: "sine"
+                },
                 envelope: {
                     attack: 0.025,
                     decay: 0.08,
